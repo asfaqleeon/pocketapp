@@ -14,7 +14,7 @@ app.controller('login',function($scope,$http,store){
             "password": epass
         };
 
-        $http.post('http://localhost:3000/api/login',auth,{
+        $http.post('https://pocketapp.herokuapp.com/api/login',auth,{
                 headers: {
                     "x-access-token": token
                 }

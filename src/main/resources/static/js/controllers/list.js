@@ -4,7 +4,7 @@ app.controller('allLink',function($scope,$http,$location,store){
     grabAllByPage();
     
     function grabAllByPage(){
-        $http.get('http://localhost:3000/api/list',{
+        $http.get('https://pocketapp.herokuapp.com/api/list',{
                 headers: {
                     "x-access-token": store.get('token')
                 }
@@ -19,7 +19,7 @@ app.controller('allLink',function($scope,$http,$location,store){
 
     $scope.deleteItem = function (id){
         console.log(id);
-        $http.delete('http://localhost:3000/api/delete',{
+        $http.delete('https://pocketapp.herokuapp.com/api/delete',{
                 params: {
                     "id": id
                 }

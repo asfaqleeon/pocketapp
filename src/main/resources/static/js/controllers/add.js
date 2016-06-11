@@ -10,7 +10,7 @@ app.controller('addLink',function($scope,$http,store){
             "category": $scope.category
         };
 
-        $http.post('http://localhost:3000/api/add',linkUrl,{
+        $http.post('https://pocketapp.herokuapp.com/api/add',linkUrl,{
                 headers: {
                     "x-access-token": store.get('token')
                 }

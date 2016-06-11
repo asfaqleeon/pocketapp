@@ -11,7 +11,7 @@ app.controller('signup',function($scope,$http){
             "password": epass
         };
 
-        $http.post('http://localhost:3000/api/signup',auth)
+        $http.post('https://pocketapp.herokuapp.com/api/signup',auth)
             .success(function(data,status){
                 console.log(data);
             })
