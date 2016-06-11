@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>auth</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css"/>
+
+</head>
+<body ng-app="mapp">
+
+    <div class="container">
+        <h1>save your links</h1>
+
+        <button class="btn btn-primary" ui-sref="signup">signup</button>
+        <button class="btn btn-primary" ui-sref="login">login</button>
+        <button class="btn btn-primary" ui-sref="logout">logout</button>
+        <button class="btn btn-primary" ui-sref="addLink">addlink</button>
+        <button class="btn btn-primary" ui-sref="list">list</button>
+
+        <div ui-view></div>
+
+    </div>
+
+    <script src="/webjars/angular/1.5.6/angular.js"></script>
+    <script src="/webjars/angular-ui-router/1.0.0-alpha.5/angular-ui-router.js"></script>
+    <script src="/webjars/angular-animate/1.5.6/angular-animate.js"></script>
+    <script src="/webjars/angular-touch/1.5.6/angular-touch.js"></script>
+    <script src="/webjars/angular-ui-bootstrap/1.3.3/ui-bootstrap.js"></script>
+    <script src="/webjars/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.js"></script>
+    <script src="/webjars/angular-strap/2.3.4/angular-strap.js"></script>
+    <script src="/webjars/angular-strap/2.3.4/angular-strap.tpl.js"></script>
+    <script src="/webjars/angular-sanitize/1.3.11/angular-sanitize.js"></script>
+    <script src="/webjars/a0-angular-storage/0.0.15/dist/angular-storage.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/signup.js"></script>
+    <script src="js/controllers/login.js"></script>
+    <script src="js/controllers/add.js"></script>
+    <script src="js/controllers/list.js"></script>
+</body>
+</html>

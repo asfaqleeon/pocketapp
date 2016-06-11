@@ -1,0 +1,14 @@
+com\app\message\ParseLinkDetails.class
+com\app\controller\AuthController.class
+com\app\domain\Account.class
+com\app\PocketappApplication.class
+com\app\message\LinkUrl.class
+com\app\message\Auth.class
+com\app\repository\LinkRepository.class
+com\app\domain\Link.class
+com\app\repository\AccountRepository.class
+com\app\controller\ApiController.class
+com\app\config\SecurityConfig.class
+com\app\config\SimpleCORSFilter.class
+com\app\message\Message.class
+com\app\domain\LinkDetails.class
