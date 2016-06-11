@@ -65,7 +65,7 @@ public class AuthController {
         }
     }
 
-    /*@RequestMapping(value = "/api/signup", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/signup", method = RequestMethod.POST)
     public Message signUp(@RequestBody Auth auth,
                           HttpServletResponse response){
 
@@ -87,8 +87,7 @@ public class AuthController {
             return new Message("not saved");
         }
 
-    }*/
-
+    }
 
 
     @RequestMapping(value = "/logout",method = RequestMethod.GET)
