@@ -1,0 +1,9 @@
+<h1>toolbar title</h1>
+
+<!--
+
+-->
+
+<button class="btn btn-primary" ng-if="!isAuth()"  ui-sref="signup">signup</button>
+<button class="btn btn-primary" ng-if="!isAuth()" ui-sref="login">login</button>
+<button class="btn btn-primary" ng-if="isAuth()" ui-sref="logout">logout</button>

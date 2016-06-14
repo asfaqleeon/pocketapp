@@ -1,12 +1,15 @@
 <div class="col-md-10">
-    <ul class="list-group" ng-repeat="d in data">
-        <li class="list-group-item">
-            <a href="{{d.url}}">
-                <h4>{{d.linkDetails.title}}</h4>
-                <h5>{{d.url}}</h5>
-                <p>{{d.category}}</p>
-            </a>
-            <button class="btn btn-sm btn-danger" ng-click="deleteItem(d.linkId)" ng-href="#/list">delete</button>
-        </li>
-    </ul>
+    <div infinite-scroll="scrolling()" infinite-scroll-distance="1">
+        <ul class="list-group" ng-repeat="d in data">
+            <li class="list-group-item">
+                <a href="{{d.url}}" target="_blank">
+                    <h4>{{d.linkDetails.title}}</h4>
+                    <h5>{{d.url}}</h5>
+                    <p>{{d.category}}</p>
+                </a>
+                <button class="btn btn-sm btn-danger" ng-click="deleteItem(d.linkId)" ng-href="#/list">delete</button>
+            </li>
+        </ul>
+    </div>
+
 </div>

@@ -17,9 +17,7 @@ app.config(function($stateProvider,$urlRouterProvider){
         .state('logout',{
             url: '/login',
             templateUrl:'/partial/login.html',
-            controller: function(store){
-                store.remove('token');
-            }
+            controller: 'logout'
         })
         .state('addLink',{
             url: '/addLink',
