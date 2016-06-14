@@ -4,12 +4,12 @@ app.service('dataService',function ($http,store) {
     var prodUrl = 'https://pocketapp.herokuapp.com';
     var devUrl = 'http://localhost:3000';
 
-    var mode = 'dev';
+    var mode = 'prod'; // dev / prod
     var url;
 
     if(mode == 'dev'){
         url = devUrl;
-    }else{
+    }else if(mode == 'prod'){
         url = prodUrl;
     }
 
