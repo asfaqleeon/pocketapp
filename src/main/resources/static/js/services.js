@@ -1,10 +1,10 @@
 var app = angular.module('mapp');
 
-app.service('dataService',function ($http,store) {
+app.service('dataService',function ($http,store,$q) {
     var prodUrl = 'https://pocketapp.herokuapp.com';
     var devUrl = 'http://localhost:3000';
 
-    var mode = 'prod'; // dev / prod
+    var mode = 'dev'; // dev / prod
     var url;
 
     if(mode == 'dev'){
@@ -59,23 +59,25 @@ app.service('dataService',function ($http,store) {
     };
 
 
-    this.showAllLinks = function () {
-        var links = [];
+    this.showAllLinks = function (s) {
+        var q = $q.defer();
+
         $http.get(url+'/api/list',{
                 headers: {
                     "x-access-token": store.get('token')
+                },
+                params: {
+                    's': s
                 }
             })
             .success(function(data){
-                data.forEach(function (d) {
-                    links.push(d);
-                });
+                q.resolve(data);
             })
             .error(function(err){
                 console.log(err);
             });
 
-        return links;
+        return q.promise;
     };
     
     this.deleteLink = function (id) {

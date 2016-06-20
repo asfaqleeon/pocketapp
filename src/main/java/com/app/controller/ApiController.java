@@ -9,6 +9,7 @@ import com.app.message.ParseLinkDetails;
 import com.app.repository.AccountRepository;
 import com.app.repository.LinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
@@ -73,12 +74,16 @@ public class ApiController {
     }
 
     @RequestMapping(value = "/api/list", method = RequestMethod.GET)
-    public @ResponseBody List<Link>  listAll(@RequestHeader("x-access-token")String token){
+    public @ResponseBody List<Link>  listAll(@RequestHeader("x-access-token")String token,
+                                             @RequestParam("s")int s){
         System.out.println(verifyToken(token));
         Account account = accountRepository.findOneByEmail(verifyToken(token));
 
-        List<Link> all = linkRepository.findAllByAccount(account,
-                new Sort(new Sort.Order(Sort.Direction.DESC, "linkId")));
+        /*List<Link> all = linkRepository.findAllByAccount(account,
+                new Sort(new Sort.Order(Sort.Direction.DESC, "linkId")));*/
+        int total = 2;
+        List<Link> all = linkRepository.findAllByAccount(account,new PageRequest(s,2
+                ,new Sort(new Sort.Order(Sort.Direction.DESC, "linkId"))));
 
         return all;
     }

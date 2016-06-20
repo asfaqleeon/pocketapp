@@ -1,5 +1,5 @@
 <div class="col-md-10">
-    <div infinite-scroll="scrolling()" infinite-scroll-distance="1">
+    <div>
         <ul class="list-group" ng-repeat="d in data">
             <li class="list-group-item">
                 <a href="{{d.url}}" target="_blank">
@@ -10,6 +10,9 @@
                 <button class="btn btn-sm btn-danger" ng-click="deleteItem(d.linkId)" ng-href="#/list">delete</button>
             </li>
         </ul>
+
+        <input type="text" ng-model="last"/>
+        <button class="btn btn-primary" ng-click="scrolling()">load more</button>
     </div>
 
 </div>

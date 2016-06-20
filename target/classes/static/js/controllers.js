@@ -70,15 +70,28 @@ app.controller('addLink',function($scope,$http,store,dataService){
 
 app.controller('allLink',function($scope,$http,$location,store,dataService){
 
+    $scope.data = [];
+    $scope.last=0;
+
     function grabAllByPage(){
-        $scope.data = dataService.showAllLinks();
+        var promise = dataService.showAllLinks($scope.last);
+        promise.then(function(resolve){
+            $scope.data = $scope.data.concat(resolve);
+            //console.log($scope.data);
+        },function(err){
+            //console.log(err);
+        });
+        $scope.last++;
+
     }
 
-    $scope.scrolling = grabAllByPage();
+    $scope.scrolling = function(){
+        grabAllByPage();
+    };
 
     $scope.deleteItem = function (id){
         console.log(id);
-        dataService.deleteItem(id);
+        dataService.deleteLink(id);
         grabAllByPage();
     }
 
