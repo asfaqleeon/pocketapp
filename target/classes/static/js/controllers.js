@@ -12,9 +12,10 @@ function toolbar($scope,store) {
 
 };
 
-app.controller('login',function($scope,$http,store,dataService){
+app.controller('login',function($scope,$http,store,dataService,$http,$location){
 
     $scope.login = function(){
+        $scope.errs = false;
 
         var token = btoa('public key');
 
@@ -26,7 +27,18 @@ app.controller('login',function($scope,$http,store,dataService){
             "password": epass
         };
 
-        dataService.loginService(auth,token);
+        var promise = dataService.loginService(auth,token);
+        promise.then(function(resolve){
+            //console.log('in ctrl: '+resolve);
+            if(resolve!= 200){
+                $scope.errs = true;
+            }
+            if(resolve == 200){
+                $location.path('list');
+            }
+        },function(err){
+
+        })
     };
 
 });
@@ -84,6 +96,8 @@ app.controller('allLink',function($scope,$http,$location,store,dataService){
         $scope.last++;
 
     }
+
+    grabAllByPage();
 
     $scope.scrolling = function(){
         grabAllByPage();

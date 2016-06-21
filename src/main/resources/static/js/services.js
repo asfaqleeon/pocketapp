@@ -15,6 +15,8 @@ app.service('dataService',function ($http,store,$q) {
 
     this.loginService = function (auth,token) {
 
+        var q = $q.defer();
+
         $http.post(url+'/api/login',auth,{
                 headers: {
                     "x-access-token": token
@@ -25,12 +27,28 @@ app.service('dataService',function ($http,store,$q) {
 
                 store.set('token',header);
 
-                console.log('login response header: '+header);
-                console.log(data);
+                if(header == null){
+                    status = 201;
+                }
+                if(data.message != 'success login'){
+                    status = 201;
+                }
+
+                if(mode == 'dev'){
+                    console.log('login response header: '+header);
+                    console.log(data.message);
+                }
+
+                q.resolve(status);
             })
             .error(function(data,status){
-                console.log('login error occurred: '+data);
+                if(mode == 'dev'){
+                    console.log('login error occurred: '+data);
+                    console.log(status);
+                }
+                q.resolve(status);
             });
+        return q.promise;
     };
 
     this.signupService = function (auth) {
